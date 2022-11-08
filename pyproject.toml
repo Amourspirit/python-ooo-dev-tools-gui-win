@@ -40,3 +40,9 @@ build-backend = "poetry.core.masonry.api"
 testpaths = [
     "tests",
 ]
+
+[[tool.poetry.source]]
+name = "pypi-test"
+url = "https://test.pypi.org/legacy/"
+default = false
+secondary = false
