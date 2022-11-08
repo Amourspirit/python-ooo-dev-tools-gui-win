@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "ooo-dev-tools-gui-win"
+version = "0.1.0"
+description = "Methods for ooo-dev-tools and LibreOffice that require GUI interaction"
+authors = [":Barry-Thomas-Paul: Moss <vibrationoflife@protonmail.com>"]
+license = "Apache Software License"
+readme = "README.md"
+keywords = ["odev", "libreoffice", "openoffice", "ooo-dev-tools", "uno", "ooouno", "pyuno"]
+packages = [
+    { include = "odevgui" }
+]
+classifiers = [
+    "Topic :: Office/Business",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+ooo-dev-tools = "^0.6.0"
+pywinauto = "^0.6.8"
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.10.0"
+types-PyAutoGUI = "^0.9.3.1"
+pytest = "^7.2.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests",
+]
