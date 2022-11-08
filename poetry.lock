@@ -123,7 +123,7 @@ python-versions = "*"
 
 [[package]]
 name = "ooo-dev-tools"
-version = "0.6.0"
+version = "0.6.1"
 description = "LibreOffice Developer Tools"
 category = "main"
 optional = false
@@ -485,8 +485,8 @@ mypy-extensions = [
     {file = "mypy_extensions-0.4.3.tar.gz", hash = "sha256:2d82818f5bb3e369420cb3c4060a7970edba416647068eb4c5343488a6c604a8"},
 ]
 ooo-dev-tools = [
-    {file = "ooo-dev-tools-0.6.0.tar.gz", hash = "sha256:4a9527ba6715a1656bd8c14875c294a63670351d423626beb489c8e7af2065f5"},
-    {file = "ooo_dev_tools-0.6.0-py3-none-any.whl", hash = "sha256:300dcb9c29fbd2d17bf280e95af3bf07af2e2ae533dbadab619561e086aab53d"},
+    {file = "ooo-dev-tools-0.6.1.tar.gz", hash = "sha256:f40d02a494fcc3032c57d901ed68f4dfaa8ba9e0e616124d138632cbd238eacf"},
+    {file = "ooo_dev_tools-0.6.1-py3-none-any.whl", hash = "sha256:bc85dcf14bd6a6ac251e359f47f9cbde04ee5a6bdf5f72a108bd37da62f65490"},
 ]
 ooouno = [
     {file = "ooouno-0.2.4-py3-none-any.whl", hash = "sha256:d61a992a7cb49f8796497a5e9561f569f0d2990032ce45c4b684a0a3e906fea8"},

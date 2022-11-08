@@ -4,8 +4,6 @@ import uno
 from com.sun.star.drawing import XShape
 from com.sun.star.drawing import XDrawPage
 
-from __future__ import annotations
-
 from ooodev.utils.lo import Lo
 from ooodev.office.draw import Draw
 
@@ -14,6 +12,8 @@ from pywinauto.application import Application
 
 
 class DrawDispatcher:
+    """Draw Dispat Automation"""
+
     @staticmethod
     def create_dispatch_shape_win(slide: XDrawPage, shape_dispatch: str) -> XShape | None:
         """
@@ -32,14 +32,6 @@ class DrawDispatcher:
         Returns:
             XShape | None: Shape on Success; Otherwise, ``None``.
         """
-        #  Create a dispatch shape in two steps: select the shape by calling dispatch_cmd()
-        # and then create it by imitating a press and drag on the visible page.
-
-        # A reference to the created shape is obtained by assuming that it's the new
-        # top-most element on the page.
-
-        # shapeDispatch is the dispatch name for a shape (e.g. "BasicShapes.diamond").
-
         num_shapes = slide.getCount()
 
         # select the shape icon; Office must be visible
