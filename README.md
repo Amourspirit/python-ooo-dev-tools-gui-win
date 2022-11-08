@@ -2,7 +2,13 @@
 
 This package contains Automation for use with LIbreOffice and [OOO Development Tools] project.
 
-# DrawDispatcher Class
+## Installation
+
+```sh
+pip install ooo-dev-tools-gui-win
+```
+
+## DrawDispatcher Class
 
 Contains methods for automatically adding Special Shapes to Draw.
 This is done via GUI Automation.

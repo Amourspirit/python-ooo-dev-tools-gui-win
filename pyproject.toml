@@ -6,6 +6,8 @@ authors = [":Barry-Thomas-Paul: Moss <vibrationoflife@protonmail.com>"]
 license = "Apache Software License"
 readme = "README.md"
 keywords = ["odev", "libreoffice", "openoffice", "ooo-dev-tools", "uno", "ooouno", "pyuno"]
+homepage = "https://github.com/Amourspirit/python-ooo-dev-tools-gui-win"
+repository = "https://github.com/Amourspirit/python-ooo-dev-tools-gui-win"
 packages = [
     { include = "odevgui_win" }
 ]
@@ -24,7 +26,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.7"
-ooo-dev-tools = "^0.6.0"
+ooo-dev-tools = ">=0.6.0"
 pywinauto = "^0.6.8"
 
 [tool.poetry.group.dev.dependencies]
