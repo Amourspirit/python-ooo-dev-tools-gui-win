@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ooo-dev-tools-gui-win"
-version = "0.1.0"
+version = "0.1.1"
 description = "Methods for ooo-dev-tools and LibreOffice that require automatic GUI interaction for windows."
 authors = [":Barry-Thomas-Paul: Moss <vibrationoflife@protonmail.com>"]
 license = "Apache Software License"
