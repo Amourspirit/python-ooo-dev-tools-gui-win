@@ -39,11 +39,25 @@ class DrawDispatcher:
         # wait just a sec.
         Lo.delay(1_000)
 
+        # Untitled 1 - LibreOffice Impress
+        # ahk_class SALFRAME
+        # ahk_exe soffice.bin
+
         # click and drag on the page to create the shape on the page;
         # the current page must be visible
-        app = Application().connect(title_re=".*LibreOffice Draw", class_name="SALFRAME")
+        title = ".*LibreOffice Draw"
+        app = None
+        try:
+            app = Application().connect(title_re=title, class_name="SALFRAME")
+        except pywinauto.ElementNotFoundError:
+            title = ".*LibreOffice Impress"
+            app = None
 
-        win = app.window(title_re=".*LibreOffice Draw")
+        if app is None:
+            # no sraw, try for Impress
+            app = Application().connect(title_re=title, class_name="SALFRAME")
+
+        win = app.window(title_re=title)
         win.set_focus()
         Lo.delay(500)
         rect = win.rectangle()
