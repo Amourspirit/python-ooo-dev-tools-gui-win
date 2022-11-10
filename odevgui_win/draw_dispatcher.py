@@ -9,6 +9,7 @@ from ooodev.office.draw import Draw
 
 import pywinauto
 from pywinauto.application import Application
+from pywinauto.keyboard import send_keys
 
 
 class DrawDispatcher:
@@ -69,9 +70,14 @@ class DrawDispatcher:
 
         # get a reference to the shape by assuming it's the top one on the page
         num_shapes2 = slide.getCount()
+        shape = None
         if num_shapes2 == num_shapes + 1:
             Lo.print(f'Shape "{shape_dispatch}" created')
-            return Draw.find_top_shape(slide)
+            shape = Draw.find_top_shape(slide)
         else:
             Lo.print(f'Shape "{shape_dispatch}" NOT created')
-            return None
+
+        # escape deselects the shape that was just created.
+        # this is critial in cases where one shape is drawn on top of another.
+        send_keys("{VK_ESCAPE}")
+        return shape
