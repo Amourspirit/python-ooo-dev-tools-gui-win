@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ooo-dev-tools-gui-win"
-version = "0.1.1"
+version = "0.1.2"
 description = "Methods for ooo-dev-tools and LibreOffice that require automatic GUI interaction for windows."
 authors = [":Barry-Thomas-Paul: Moss <vibrationoflife@protonmail.com>"]
 license = "Apache Software License"
@@ -27,7 +27,7 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.7"
 ooo-dev-tools = ">=0.6.0"
-pywinauto = "^0.6.8"
+pywinauto = ">=0.6.8"
 
 [tool.poetry.group.dev.dependencies]
 black = "^22.10.0"
