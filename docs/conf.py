@@ -94,7 +94,5 @@ numfig = True
 todo_include_todos = False
 
 autodoc_mock_imports = []
-try:
-    import pywinauto
-except ImportError:
-    autodoc_mock_imports.append("pywinauto")
+
+autodoc_mock_imports.append("pywinauto")
