@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ooo-dev-tools-gui-win"
-version = "0.1.2"
+version = "0.2.0"
 description = "Methods for ooo-dev-tools and LibreOffice that require automatic GUI interaction for windows."
 authors = [":Barry-Thomas-Paul: Moss <vibrationoflife@protonmail.com>"]
 license = "Apache Software License"
@@ -26,13 +26,20 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.7"
-ooo-dev-tools = ">=0.6.0"
+ooo-dev-tools = ">=0.6.2"
 pywinauto = ">=0.6.8"
 
 [tool.poetry.group.dev.dependencies]
 black = "^22.10.0"
 types-PyAutoGUI = "^0.9.3.1"
 pytest = "^7.2.0"
+
+
+
+[tool.poetry.group.docs.dependencies]
+sphinx-toolbox = ">=3.2.0"
+sphinx-tabs = ">=3.4.1"
+sphinx-rtd-dark-mode = ">=1.2.4"
 
 [build-system]
 requires = ["poetry-core"]

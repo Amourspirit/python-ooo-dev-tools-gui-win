@@ -1,9 +1,11 @@
 from __future__ import annotations
+from typing import List
 
 import uno
 from com.sun.star.drawing import XShape
 from com.sun.star.drawing import XDrawPage
 
+from ooodev.utils.data_type.window_title import WindowTitle
 from ooodev.utils.lo import Lo
 from ooodev.office.draw import Draw
 
@@ -16,7 +18,7 @@ class DrawDispatcher:
     """Draw Dispat Automation"""
 
     @staticmethod
-    def create_dispatch_shape_win(slide: XDrawPage, shape_dispatch: str) -> XShape | None:
+    def create_dispatch_shape(slide: XDrawPage, shape_dispatch: str, *titles: WindowTitle) -> XShape | None:
         """
         Creates a dispatch shape in two steps.
 
@@ -29,16 +31,20 @@ class DrawDispatcher:
         Args:
             slide (XDrawPage): Draw Page
             shape_dispatch (str): Shape Dispatch Command
+            *titles: Optional Extended sequence of title information. This is used to match windows title.
 
         Returns:
             XShape | None: Shape on Success; Otherwise, ``None``.
+
+        Notes:
+            Assumes that connection to LibreOffice has been made with ``Lo.load_office()``
         """
         num_shapes = slide.getCount()
 
         # select the shape icon; Office must be visible
         Lo.dispatch_cmd(shape_dispatch)
         # wait just a sec.
-        Lo.delay(1_000)
+        # Lo.delay(1_000)
 
         # Untitled 1 - LibreOffice Impress
         # ahk_class SALFRAME
@@ -46,19 +52,33 @@ class DrawDispatcher:
 
         # click and drag on the page to create the shape on the page;
         # the current page must be visible
-        title = ".*LibreOffice Draw"
+        lst_titles: List[WindowTitle] = list(titles)
+        if len(lst_titles) == 0:
+            lst_titles.append(WindowTitle(".*LibreOffice Draw", True))
+            lst_titles.append(WindowTitle(".*LibreOffice Impress", True))
+
         app = None
-        try:
-            app = Application().connect(title_re=title, class_name="SALFRAME")
-        except pywinauto.ElementNotFoundError:
-            title = ".*LibreOffice Impress"
-            app = None
-
+        title_arg = None
+        for title in lst_titles:
+            d_args = {"class_name": title.class_name}
+            if title.is_regex:
+                d_args["title_re"] = title.title
+            else:
+                d_args["title"] = title.title
+            try:
+                app = Application().connect(**d_args)
+                title_arg = title
+                if app:
+                    break
+            except pywinauto.ElementNotFoundError:
+                app = None
         if app is None:
-            # no sraw, try for Impress
-            app = Application().connect(title_re=title, class_name="SALFRAME")
+            raise pywinauto.ElementNotFoundError()
+        if title_arg.is_regex:
+            win = app.window(title_re=title_arg.title)
+        else:
+            win = app.window(title=title_arg.title)
 
-        win = app.window(title_re=title)
         win.set_focus()
         Lo.delay(500)
         rect = win.rectangle()
@@ -69,6 +89,7 @@ class DrawDispatcher:
         pywinauto.mouse.release(button="left", coords=(center_x + 50, center_y + 50))
 
         # get a reference to the shape by assuming it's the top one on the page
+        Lo.delay(300)
         num_shapes2 = slide.getCount()
         shape = None
         if num_shapes2 == num_shapes + 1:
