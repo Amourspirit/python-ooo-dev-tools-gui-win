@@ -92,3 +92,9 @@ numfig = True
 # a master list of todo's will be on bottom of main page.
 # https://www.sphinx-doc.org/en/master/usage/extensions/todo.html#module-sphinx.ext.todo
 todo_include_todos = False
+
+autodoc_mock_imports = []
+try:
+    import pywinauto
+except ImportError:
+    autodoc_mock_imports.append("pywinauto")
