@@ -18,9 +18,7 @@ def test_create_dispatch_shape_win(loader) -> None:
     Lo.delay(1_000)
     GUI.zoom(view=GUI.ZoomEnum.PAGE_WIDTH)
     # Lo.delay(1_000)
-    shape = DrawDispatcher.create_dispatch_shape_win(
-        slide=slide, shape_dispatch=ShapeDispatchKind.BASIC_SHAPES_DIAMOND
-    )
+    shape = DrawDispatcher.create_dispatch_shape(slide=slide, shape_dispatch=ShapeDispatchKind.BASIC_SHAPES_DIAMOND)
     assert shape is not None
     Lo.close(closeable=doc, deliver_ownership=False)
 
@@ -43,7 +41,7 @@ def test_dispatch_basic_diamond(loader) -> None:
         y=60,
         width=50,
         height=30,
-        fn=DrawDispatcher.create_dispatch_shape_win,
+        fn=DrawDispatcher.create_dispatch_shape,
     )
     Lo.delay(delay)
     Lo.close(closeable=doc, deliver_ownership=False)
@@ -68,7 +66,7 @@ def test_dispatch_callout_shapes_cloud_callout(loader) -> None:
         y=60,
         width=50,
         height=30,
-        fn=DrawDispatcher.create_dispatch_shape_win,
+        fn=DrawDispatcher.create_dispatch_shape,
     )
     Draw.set_bitmap_color(shape, DrawingBitmapKind.LITTLE_CLOUDS)
     Lo.delay(delay)
@@ -93,7 +91,7 @@ def test_dispatch_flow_chart_shape_flow_chart_card(loader) -> None:
         y=60,
         width=50,
         height=30,
-        fn=DrawDispatcher.create_dispatch_shape_win,
+        fn=DrawDispatcher.create_dispatch_shape,
     )
     Draw.set_hatch_color(shape, DrawingHatchingKind.BLUE_NEG_45_DEGREES)
     Lo.delay(delay)
@@ -118,7 +116,7 @@ def test_dispatch_star_shapes_star12(loader) -> None:
         y=140,
         width=40,
         height=40,
-        fn=DrawDispatcher.create_dispatch_shape_win,
+        fn=DrawDispatcher.create_dispatch_shape,
     )
     Draw.set_gradient_color(shape, DrawingGradientKind.NEON_LIGHT)
     Props.set(shape, LineStyle=LineStyle.NONE)
@@ -144,7 +142,7 @@ def test_dispatch_symbol_shapes_heart(loader) -> None:
         y=140,
         width=40,
         height=40,
-        fn=DrawDispatcher.create_dispatch_shape_win,
+        fn=DrawDispatcher.create_dispatch_shape,
     )
     Props.set(shape, FillColor=CommonColor.RED)
     Lo.delay(delay)
@@ -169,7 +167,7 @@ def test_dispatch_arrow_shapes_left_right_arrow(loader) -> None:
         y=140,
         width=50,
         height=30,
-        fn=DrawDispatcher.create_dispatch_shape_win,
+        fn=DrawDispatcher.create_dispatch_shape,
     )
     Lo.delay(delay)
     Lo.close(closeable=doc, deliver_ownership=False)
@@ -193,7 +191,7 @@ def test_dispatch_3d_cyramid(loader) -> None:
         y=120,
         width=50,
         height=30,
-        fn=DrawDispatcher.create_dispatch_shape_win,
+        fn=DrawDispatcher.create_dispatch_shape,
     )
     Lo.delay(delay)
     Lo.close(closeable=doc, deliver_ownership=False)
@@ -218,7 +216,7 @@ def test_dispatch_3d_HalfSphere(loader) -> None:
         y=60,
         width=50,
         height=30,
-        fn=DrawDispatcher.create_dispatch_shape_win,
+        fn=DrawDispatcher.create_dispatch_shape,
     )
     Lo.delay(delay)
     Lo.close(closeable=doc, deliver_ownership=False)
