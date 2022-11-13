@@ -93,6 +93,9 @@ numfig = True
 # https://www.sphinx-doc.org/en/master/usage/extensions/todo.html#module-sphinx.ext.todo
 todo_include_todos = False
 
+# https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#confval-autodoc_mock_imports
 autodoc_mock_imports = []
 
 autodoc_mock_imports.append("pywinauto")
+autodoc_mock_imports.append("com")
+autodoc_mock_imports.append("uno")
