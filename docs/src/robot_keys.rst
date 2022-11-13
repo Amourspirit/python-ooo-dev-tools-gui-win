@@ -44,7 +44,7 @@ In this example key are sent specifically to Calc Window with ``myfile.ods`` ope
 
     RobotKeys.send(
         SendKeyInfo(CalcKeyCodes.TOGGLE_GRID_LINES),
-        WriterKeyCodes(title="myfile.ods - LibreOffice Calc")
+        WindowTitle(title="myfile.ods - LibreOffice Calc")
     )
 
 Class
