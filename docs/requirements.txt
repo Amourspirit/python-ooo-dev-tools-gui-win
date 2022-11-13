@@ -1,0 +1,4 @@
+sphinx-toolbox
+sphinx-rtd-dark-mode
+typing_extensions
+ooo-dev-tools
