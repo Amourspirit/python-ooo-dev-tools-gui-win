@@ -16,6 +16,7 @@ from .exceptions import ElementNotFoundError
 class RobotKeys:
     """Robot Keys"""
 
+    @staticmethod
     def send_current(key: SendKeyInfo) -> None:
         """
         Sends key to the current LibreOffice window.
