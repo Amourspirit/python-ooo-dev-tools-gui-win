@@ -14,8 +14,7 @@ See Also:
     .. cssclass:: ul-list
 
         * |odev_part3|_
-        * `ooodev.office.draw.Draw.add_dispatch_shape() <https://python-ooo-dev-tools.readthedocs.io/en/latest/src/office/draw.html#ooodev.office.draw.Draw.add_dispatch_shape>`_
-
+        * :external+odev:py:meth:`ooodev.office.draw.Draw.add_dispatch_shape`
 
 Class
 -----

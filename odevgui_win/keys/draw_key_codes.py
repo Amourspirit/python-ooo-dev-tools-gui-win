@@ -9,7 +9,8 @@ class DrawKeyCodes(GeneralKeyCodes):
 
     These key code only work if Draw main menu is active (visible).
 
-    One way around this issue is to use GUI to ensure menu bar is visible.
+    One way around this issue is to use :external+odev:py:meth:`ooodev.utils.gui.GUI.show_memu_bar`
+    to ensure menu bar is visible.
 
     ::
 

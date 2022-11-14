@@ -20,10 +20,12 @@ os.environ["ooouno_ignore_runtime"] = "True"
 
 # -- Project information -----------------------------------------------------
 
-project = "ooo-dev-tools-gui-win"
+project = "ODEV GUI Automation for windows"
 copyright = "2022, :Barry-Thomas-Paul: Moss"
 author = ":Barry-Thomas-Paul: Moss"
-release = "0.2"
+release = "0.2.1"
+
+odev_url = "https://python-ooo-dev-tools.readthedocs.io/en/latest/"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -38,6 +40,7 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx.ext.todo",
     "sphinx.ext.extlinks",
+    "sphinx.ext.intersphinx",
     "sphinx_tabs.tabs",
 ]
 
@@ -70,9 +73,7 @@ napoleon_include_init_with_doc = True
 
 autodoc_mock_imports = ["uno", "unohelper", "com"]
 
-rst_prolog = """.. |app_name| replace:: ODEV GUI Automation for windows
-
-.. |odev_tools| replace:: OOO Development Tools
+rst_prolog = """.. |odev_tools| replace:: OOO Development Tools
 .. _odev_tools: https://python-ooo-dev-tools.readthedocs.io/en/latest/index.html
 
 .. |impress_make_slides| replace:: Impress Make Slides
@@ -84,6 +85,8 @@ rst_prolog = """.. |app_name| replace:: ODEV GUI Automation for windows
 .. |odev_part3| replace:: OOO Development Tools - Part 3: Draw & Impress
 .. _odev_part3: https://python-ooo-dev-tools.readthedocs.io/en/latest/odev/part3/index.html
 """
+
+rst_prolog += f".. |app_name| replace:: {project}"
 
 # set if figures can be referenced as numers. Defalut is False
 numfig = True
@@ -99,3 +102,8 @@ autodoc_mock_imports = []
 autodoc_mock_imports.append("pywinauto")
 autodoc_mock_imports.append("com")
 autodoc_mock_imports.append("uno")
+
+# region intersphinx
+intersphinx_mapping = {"odev": (odev_url, None)}
+
+# endregion intersphinx
