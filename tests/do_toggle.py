@@ -31,6 +31,7 @@ def main() -> int:
         win.set_focus()
         GUI.show_memu_bar()
         time.sleep(0.5)
+        # print("Title Bar:", GUI.get_title_bar())
         send_keys(WriterKeyCodes.KB_SELECT_ALL)
 
         time.sleep(0.5)

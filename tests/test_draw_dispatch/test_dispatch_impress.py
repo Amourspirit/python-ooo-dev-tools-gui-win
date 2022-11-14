@@ -32,7 +32,7 @@ def test_create_dispatch_shapes_impress(loader) -> None:
         y=y,
         width=50,
         height=30,
-        fn=DrawDispatcher.create_dispatch_shape_win,
+        fn=DrawDispatcher.create_dispatch_shape,
     )
     _ = Draw.add_dispatch_shape(
         slide=curr_slide,
@@ -41,7 +41,7 @@ def test_create_dispatch_shapes_impress(loader) -> None:
         y=y,
         width=50,
         height=30,
-        fn=DrawDispatcher.create_dispatch_shape_win,
+        fn=DrawDispatcher.create_dispatch_shape,
     )
     dshape = Draw.add_dispatch_shape(
         slide=curr_slide,
@@ -50,7 +50,7 @@ def test_create_dispatch_shapes_impress(loader) -> None:
         y=y,
         width=50,
         height=30,
-        fn=DrawDispatcher.create_dispatch_shape_win,
+        fn=DrawDispatcher.create_dispatch_shape,
     )
     Draw.set_bitmap_color(shape=dshape, name=DrawingBitmapKind.LITTLE_CLOUDS)
 
@@ -61,7 +61,7 @@ def test_create_dispatch_shapes_impress(loader) -> None:
         y=y,
         width=50,
         height=30,
-        fn=DrawDispatcher.create_dispatch_shape_win,
+        fn=DrawDispatcher.create_dispatch_shape,
     )
     Draw.set_hatch_color(shape=dshape, name=DrawingHatchingKind.BLUE_NEG_45_DEGREES)
     # convert blue to black manually
@@ -79,7 +79,7 @@ def test_create_dispatch_shapes_impress(loader) -> None:
         y=y,
         width=40,
         height=40,
-        fn=DrawDispatcher.create_dispatch_shape_win,
+        fn=DrawDispatcher.create_dispatch_shape,
     )
     Draw.set_gradient_color(shape=dshape, name=DrawingGradientKind.SUNSHINE)
     Props.set(dshape, LineStyle=LineStyle.NONE)
@@ -91,7 +91,7 @@ def test_create_dispatch_shapes_impress(loader) -> None:
         y=y,
         width=40,
         height=40,
-        fn=DrawDispatcher.create_dispatch_shape_win,
+        fn=DrawDispatcher.create_dispatch_shape,
     )
     Props.set(dshape, FillColor=CommonColor.RED)
 
@@ -102,7 +102,7 @@ def test_create_dispatch_shapes_impress(loader) -> None:
         y=y,
         width=50,
         height=30,
-        fn=DrawDispatcher.create_dispatch_shape_win,
+        fn=DrawDispatcher.create_dispatch_shape,
     )
     dshape = Draw.add_dispatch_shape(
         slide=curr_slide,
@@ -111,7 +111,7 @@ def test_create_dispatch_shapes_impress(loader) -> None:
         y=y - 20,
         width=50,
         height=50,
-        fn=DrawDispatcher.create_dispatch_shape_win,
+        fn=DrawDispatcher.create_dispatch_shape,
     )
     Draw.set_bitmap_color(shape=dshape, name=DrawingBitmapKind.STONE)
     num_shapes = curr_slide.getCount()

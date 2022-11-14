@@ -3,10 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to |app_name| documentation!
+Docs for |app_name|.
 =================================================
 
-|app_name| extends |odev_tools|_ allow for GUI Automation on Windows.
+|app_name| extends |odev_tools|_.
 
 Automation classes are:
 
@@ -15,6 +15,7 @@ Automation classes are:
    * :ref:`class_dialog_auto`
    * :ref:`class_draw_dispatcher`
    * :ref:`class_robot_keys`
+   * :ref:`class_focus`
 
 See example |impress_make_slides|_.
 
