@@ -9,10 +9,43 @@ from pywinauto.keyboard import send_keys
 from ooodev.utils.data_type.window_title import WindowTitle as WindowTitle
 
 from .class_args.send_key_info import SendKeyInfo as SendKeyInfo
+from .focus import Focus
+from .exceptions import ElementNotFoundError
 
 
 class RobotKeys:
-    """Draw Dispat Automation"""
+    """Robot Keys"""
+
+    def send_current(key: SendKeyInfo) -> None:
+        """
+        Sends key to the current LibreOffice window.
+        Assumes window was created with :external+odev:py:meth:`ooodev.utils.lo.Lo.load_office`.
+
+        Args:
+            key (SendKeyInfo): Keys to emulate
+
+        Raises:
+            ElementNotFoundError: If unable to find and focus window.
+
+        Returns:
+            None:
+
+        Note:
+            There are many include keyboard shortcuts for LibreOffice included in this package.
+
+            .. cssclass:: ul-list
+
+                * :py:class:`~.calc_key_codes.CalcKeyCodes`
+                * :py:class:`~.draw_key_codes.DrawKeyCodes`
+                * :py:class:`~.impress_key_codes.ImpressKeyCodes`
+                * :py:class:`~.writer_key_codes.WriterKeyCodes`
+        """
+        win = Focus.focus_current()
+
+        if not win:
+            raise ElementNotFoundError()
+
+        send_keys(key.keys)
 
     @overload
     @staticmethod
@@ -32,14 +65,17 @@ class RobotKeys:
         If titles are include then the first matching title will have keys sent to it.
 
         Args:
-            key (SendKeyInfo): Keys to enulate
-            *titles: optional expandable List of Window titles to match
+            key (SendKeyInfo): Keys to emulate
+            *titles: Optonal expandable list of :external+odev:py:class:`ooodev.utils.data_type.window_title.WindowTitle`
 
         Raises:
-            pywinauto.ElementNotFoundError: If titles are include but no title is matched.
+            ElementNotFoundError: If titles are include but no title is matched.
+
+        Returns:
+            None:
 
         Note:
-            There are many include keyboard shorts for LibreOffice included in this package.
+            There are many include keyboard shortcuts for LibreOffice included in this package.
 
             .. cssclass:: ul-list
 

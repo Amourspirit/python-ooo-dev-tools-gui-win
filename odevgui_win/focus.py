@@ -6,10 +6,12 @@ import pywinauto
 from ooodev.utils.data_type.window_title import WindowTitle as WindowTitle
 from ooodev.utils.gui import GUI
 
+from .data_type.rectangle import Rectangle
+
 
 class Focus:
-    @staticmethod
-    def focus(*titles: WindowTitle) -> pywinauto.WindowSpecification | None:
+    @classmethod
+    def focus(cls, *titles: WindowTitle) -> Rectangle | None:
         """
         Set focus on first window that matches.
 
@@ -17,7 +19,7 @@ class Focus:
             *titles: Expandable list of :external+odev:py:class:`ooodev.utils.data_type.window_title.WindowTitle`
 
         Returns:
-            WindowSpecification: If found; Otherwise, ``None``
+            Rectangle: Rectangle representing window if found; Otherwise, ``None``
 
         See Also:
             :py:meth:`~.focus.Focus.focus_current`
@@ -47,26 +49,29 @@ class Focus:
             else:
                 win = app.window(title=title_arg.title)
             win.set_focus()
-            return win
+            return cls._win_to_rect(win)
         except Exception:
             pass
         return None
 
     @classmethod
-    def focus_current(cls) -> pywinauto.WindowSpecification | None:
+    def focus_current(cls) -> Rectangle | None:
         """
         Focuses on the current window detected by :external+odev:py:class:`ooodev.utils.lo.Lo`.
 
         Returns:
-            WindowSpecification: If found; Otherwise, ``None``
+            Rectangle: Rectangle representing window if found; Otherwise, ``None``
 
         See Also:
             :py:meth:`~.focus.Focus.focus`
         """
         win = cls._focus_hwnd()
         if win:
-            return win
-        return cls._focus_title()
+            return cls._win_to_rect(win)
+        win = cls._focus_title()
+        if win:
+            return cls._win_to_rect(win)
+        return None
 
     @staticmethod
     def _focus_hwnd() -> pywinauto.WindowSpecification | None:
@@ -98,3 +103,8 @@ class Focus:
         except Exception:
             pass
         return None
+
+    @staticmethod
+    def _win_to_rect(win) -> Rectangle:
+        rect = win.rectangle()
+        return Rectangle(left=rect.left, right=rect.right, top=rect.top, bottom=rect.bottom)

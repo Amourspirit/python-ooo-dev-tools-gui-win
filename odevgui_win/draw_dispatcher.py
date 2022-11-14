@@ -12,6 +12,7 @@ import pywinauto
 from pywinauto.keyboard import send_keys
 
 from .focus import Focus
+from .exceptions import ElementNotFoundError
 
 
 class DrawDispatcher:
@@ -33,6 +34,9 @@ class DrawDispatcher:
             shape_dispatch (str): Shape Dispatch Command
             *titles: Optional Extended sequence of title information. This is used to match windows title.
 
+        Raises:
+            ElementNotFoundError: If unable to find a LibreOffice window to dispatch to.
+
         Returns:
             XShape | None: Shape on Success; Otherwise, ``None``.
 
@@ -49,15 +53,14 @@ class DrawDispatcher:
         # click and drag on the page to create the shape on the page;
         # the current page must be visible
 
-        win = Focus.focus_current()
-        if not win:
-            win = Focus.focus(WindowTitle(".*LibreOffice Draw", True), WindowTitle(".*LibreOffice Impress", True))
+        rect = Focus.focus_current()
+        if not rect:
+            rect = Focus.focus(WindowTitle(".*LibreOffice Draw", True), WindowTitle(".*LibreOffice Impress", True))
 
-        if not win:
-            raise pywinauto.ElementNotFoundError
+        if not rect:
+            raise ElementNotFoundError()
 
         Lo.delay(500)
-        rect = win.rectangle()
         center_x = round((rect.right - rect.left) / 2) + rect.left
         center_y = round((rect.bottom - rect.top) / 2) + rect.top
 
