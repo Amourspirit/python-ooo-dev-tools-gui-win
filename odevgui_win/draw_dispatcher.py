@@ -1,5 +1,4 @@
 from __future__ import annotations
-from typing import List
 
 import uno
 from com.sun.star.drawing import XShape
@@ -10,19 +9,20 @@ from ooodev.utils.lo import Lo
 from ooodev.office.draw import Draw
 
 import pywinauto
-from pywinauto.application import Application
 from pywinauto.keyboard import send_keys
+
+from .focus import Focus
 
 
 class DrawDispatcher:
     """Draw Dispat Automation"""
 
     @staticmethod
-    def create_dispatch_shape(slide: XDrawPage, shape_dispatch: str, *titles: WindowTitle) -> XShape | None:
+    def create_dispatch_shape(slide: XDrawPage, shape_dispatch: str) -> XShape | None:
         """
         Creates a dispatch shape in two steps.
 
-        1. Select the shape by calling ``Lo.dispatch_cmd()``
+        1. Select the shape by calling :external+odev:py:meth:`ooodev.utils.lo.Lo.dispatch_cmd`
         2. Creates the shape on screen by imitating a press and drag on the visible page.
 
         A reference to the created shape is obtained by assuming that it's the new
@@ -37,7 +37,7 @@ class DrawDispatcher:
             XShape | None: Shape on Success; Otherwise, ``None``.
 
         Notes:
-            Assumes that connection to LibreOffice has been made with ``Lo.load_office()``
+            Assumes that connection to LibreOffice has been made with :external+odev:py:meth:`ooodev.utils.lo.Lo.load_office`.
         """
         num_shapes = slide.getCount()
 
@@ -46,40 +46,16 @@ class DrawDispatcher:
         # wait just a sec.
         # Lo.delay(1_000)
 
-        # Untitled 1 - LibreOffice Impress
-        # ahk_class SALFRAME
-        # ahk_exe soffice.bin
-
         # click and drag on the page to create the shape on the page;
         # the current page must be visible
-        lst_titles: List[WindowTitle] = list(titles)
-        if len(lst_titles) == 0:
-            lst_titles.append(WindowTitle(".*LibreOffice Draw", True))
-            lst_titles.append(WindowTitle(".*LibreOffice Impress", True))
 
-        app = None
-        title_arg = None
-        for title in lst_titles:
-            d_args = {"class_name": title.class_name}
-            if title.is_regex:
-                d_args["title_re"] = title.title
-            else:
-                d_args["title"] = title.title
-            try:
-                app = Application().connect(**d_args)
-                title_arg = title
-                if app:
-                    break
-            except pywinauto.ElementNotFoundError:
-                app = None
-        if app is None:
-            raise pywinauto.ElementNotFoundError()
-        if title_arg.is_regex:
-            win = app.window(title_re=title_arg.title)
-        else:
-            win = app.window(title=title_arg.title)
+        win = Focus.focus_current()
+        if not win:
+            win = Focus.focus(WindowTitle(".*LibreOffice Draw", True), WindowTitle(".*LibreOffice Impress", True))
 
-        win.set_focus()
+        if not win:
+            raise pywinauto.ElementNotFoundError
+
         Lo.delay(500)
         rect = win.rectangle()
         center_x = round((rect.right - rect.left) / 2) + rect.left

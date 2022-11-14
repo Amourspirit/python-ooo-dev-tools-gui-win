@@ -216,7 +216,7 @@ dates = ["pytz (>=2019.1)"]
 
 [[package]]
 name = "exceptiongroup"
-version = "1.0.1"
+version = "1.0.2"
 description = "Backport of PEP 654 (exception groups)"
 category = "dev"
 optional = false
@@ -358,7 +358,7 @@ icu = ["PyICU (>=1.0.0)"]
 
 [[package]]
 name = "ooo-dev-tools"
-version = "0.6.2"
+version = "0.6.3"
 description = "LibreOffice Developer Tools"
 category = "main"
 optional = false
@@ -394,7 +394,7 @@ pyparsing = ">=2.0.2,<3.0.5 || >3.0.5"
 
 [[package]]
 name = "pathspec"
-version = "0.10.1"
+version = "0.10.2"
 description = "Utility library for gitignore style pattern matching of file paths."
 category = "dev"
 optional = false
@@ -926,7 +926,7 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "5a3b303e6d550753034c5b2f0f4736e8d4ee22ef14ddf880695d92474d0954be"
+content-hash = "0fae4d45ef0b047dcadc05e1974f1eac2c1fddea51ce66a486217d9acca102ec"
 
 [metadata.files]
 alabaster = [
@@ -1017,8 +1017,8 @@ domdf-python-tools = [
     {file = "domdf_python_tools-3.5.0.tar.gz", hash = "sha256:f449046055deea87613791a17249bf5d1969546c337c7df53bdf43ad99316b64"},
 ]
 exceptiongroup = [
-    {file = "exceptiongroup-1.0.1-py3-none-any.whl", hash = "sha256:4d6c0aa6dd825810941c792f53d7b8d71da26f5e5f84f20f9508e8f2d33b140a"},
-    {file = "exceptiongroup-1.0.1.tar.gz", hash = "sha256:73866f7f842ede6cb1daa42c4af078e2035e5f7607f0e2c762cc51bb31bbe7b2"},
+    {file = "exceptiongroup-1.0.2-py3-none-any.whl", hash = "sha256:c22f11ec6a10d2b453871c5c5fe887436c4d1961324ce9090f2ca6ddc4180c27"},
+    {file = "exceptiongroup-1.0.2.tar.gz", hash = "sha256:a31cd183c3dea02e617aab5153588d5f7258a77b51f0ef41b3815ae8a0d0f695"},
 ]
 html5lib = [
     {file = "html5lib-1.1-py2.py3-none-any.whl", hash = "sha256:0d78f8fde1c230e99fe37986a60526d7049ed4bf8a9fadbad5f00e22e58e041d"},
@@ -1225,8 +1225,8 @@ natsort = [
     {file = "natsort-8.2.0.tar.gz", hash = "sha256:57f85b72c688b09e053cdac302dd5b5b53df5f73ae20b4874fcbffd8bf783d11"},
 ]
 ooo-dev-tools = [
-    {file = "ooo-dev-tools-0.6.2.tar.gz", hash = "sha256:21441628afdaf38d3047ad8730c528e6be525e0f8b0bed7f3d828b700bc06842"},
-    {file = "ooo_dev_tools-0.6.2-py3-none-any.whl", hash = "sha256:686f4903c10ecfa486e86248657af175f7dddb5c0c29186713b5c0e53a1dbd09"},
+    {file = "ooo-dev-tools-0.6.3.tar.gz", hash = "sha256:e8e48291936d48d0d753a86550536ea369823aa95d0ffaf9a4a27a658967dc1c"},
+    {file = "ooo_dev_tools-0.6.3-py3-none-any.whl", hash = "sha256:ac73e1dd6a0ba022c5e23b4eaa37d15d45a81ab4ddf2829184737c3d52d11804"},
 ]
 ooouno = [
     {file = "ooouno-0.2.4-py3-none-any.whl", hash = "sha256:d61a992a7cb49f8796497a5e9561f569f0d2990032ce45c4b684a0a3e906fea8"},
@@ -1237,8 +1237,8 @@ packaging = [
     {file = "packaging-21.3.tar.gz", hash = "sha256:dd47c42927d89ab911e606518907cc2d3a1f38bbd026385970643f9c5b8ecfeb"},
 ]
 pathspec = [
-    {file = "pathspec-0.10.1-py3-none-any.whl", hash = "sha256:46846318467efc4556ccfd27816e004270a9eeeeb4d062ce5e6fc7a87c573f93"},
-    {file = "pathspec-0.10.1.tar.gz", hash = "sha256:7ace6161b621d31e7902eb6b5ae148d12cfd23f4a249b9ffb6b9fee12084323d"},
+    {file = "pathspec-0.10.2-py3-none-any.whl", hash = "sha256:88c2606f2c1e818b978540f73ecc908e13999c6c3a383daf3705652ae79807a5"},
+    {file = "pathspec-0.10.2.tar.gz", hash = "sha256:8f6bf73e5758fd365ef5d58ce09ac7c27d2833a8d7da51712eac6e27e35141b0"},
 ]
 Pillow = [
     {file = "Pillow-9.3.0-cp310-cp310-macosx_10_10_x86_64.whl", hash = "sha256:0b7257127d646ff8676ec8a15520013a698d1fdc48bc2a79ba4e53df792526f2"},
