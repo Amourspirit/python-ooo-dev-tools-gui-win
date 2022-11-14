@@ -7,6 +7,7 @@ odevgui_win
    :glob:
 
    class_args/index
+   data_type/index
    kind/index
    keys/index
    *

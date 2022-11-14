@@ -23,7 +23,7 @@ os.environ["ooouno_ignore_runtime"] = "True"
 project = "ODEV GUI Automation for windows"
 copyright = "2022, :Barry-Thomas-Paul: Moss"
 author = ":Barry-Thomas-Paul: Moss"
-release = "0.2.1"
+release = "0.3.0"
 
 odev_url = "https://python-ooo-dev-tools.readthedocs.io/en/latest/"
 
