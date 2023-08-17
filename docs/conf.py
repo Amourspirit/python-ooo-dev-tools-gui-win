@@ -67,7 +67,7 @@ extensions = [
     "sphinx_toolbox.more_autodoc.autonamedtuple",
     "sphinx.ext.napoleon",
     "sphinx.ext.todo",
-    "sphinx.ext.extlinks",
+    # "sphinx.ext.extlinks",
     "sphinx.ext.intersphinx",
     "sphinx_tabs.tabs",
 ]
@@ -75,7 +75,7 @@ extensions = [
 templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
-
+# extlinks = {'odev': (f'{odev_url}/%s', '%s')}
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
@@ -133,5 +133,6 @@ autodoc_mock_imports.append("uno")
 
 # region intersphinx
 intersphinx_mapping = {"odev": (odev_url, None)}
+# intersphinx_mapping = {odev_url: None}
 
 # endregion intersphinx
