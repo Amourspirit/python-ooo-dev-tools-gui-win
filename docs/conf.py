@@ -8,24 +8,52 @@
 import os
 import sys
 from pathlib import Path
+import toml
 
 _DOCS_PATH = Path(__file__).parent
 _ROOT_PATH = _DOCS_PATH.parent
 
 sys.path.insert(0, str(_ROOT_PATH))
-from ooodev import __version__
+
 
 os.environ["DOCS_BUILDING"] = "True"
 os.environ["ooouno_ignore_runtime"] = "True"
 
+
+def find_file_in_parent_dirs(filename: str, path: str = "") -> str:
+    """
+    Recursively searches parent directories for a file with the given filename.
+    Returns the absolute path to the file if found, or None if not found.
+    """
+    if path is None:
+        path = os.getcwd()
+
+    file_path = os.path.join(path, filename)
+    if os.path.exists(file_path):
+        return os.path.abspath(file_path)
+
+    parent_dir = os.path.abspath(os.path.join(path, os.pardir))
+    if parent_dir == path:
+        # We've reached the root directory and haven't found the file
+        return ""
+
+    return find_file_in_parent_dirs(filename, parent_dir)
+
+from odevgui_win import __version__  # noqa: E402
+
+toml_path = find_file_in_parent_dirs("pyproject.toml")
+toml_cfg = toml.load(toml_path)
 # -- Project information -----------------------------------------------------
 
-project = "ODEV GUI Automation for windows"
-copyright = "2022, :Barry-Thomas-Paul: Moss"
-author = ":Barry-Thomas-Paul: Moss"
-release = "0.3.1"
+poetry_cfg = toml_cfg["tool"]["poetry"]
+custom_meta = toml_cfg["custom"]["metadata"]
 
-odev_url = "https://python-ooo-dev-tools.readthedocs.io/en/latest/"
+project = custom_meta["docs_name"]
+copyright = f'{custom_meta["copyright"]} {custom_meta["author"]}'
+author = custom_meta["author"]
+release = __version__
+
+odev_url = custom_meta["ooodev_url"]
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -88,7 +116,7 @@ rst_prolog = """.. |odev_tools| replace:: OOO Development Tools
 
 rst_prolog += f".. |app_name| replace:: {project}"
 
-# set if figures can be referenced as numers. Defalut is False
+# set if figures can be referenced as numbers. Default is False
 numfig = True
 
 # set is todo's will show up.
