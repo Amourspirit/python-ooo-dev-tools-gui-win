@@ -46,7 +46,7 @@ toml_cfg = toml.load(toml_path)
 # -- Project information -----------------------------------------------------
 
 poetry_cfg = toml_cfg["tool"]["poetry"]
-custom_meta = toml_cfg["custom"]["metadata"]
+custom_meta = toml_cfg["tool"]["odevgui_win"]
 
 project = custom_meta["docs_name"]
 copyright = f'{custom_meta["copyright"]} {custom_meta["author"]}'

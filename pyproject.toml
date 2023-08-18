@@ -25,11 +25,11 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
 ]
 
-[custom.metadata]
+[tool.odevgui_win]
 docs_name = "OooDev GUI Automation for windows"
 author = ":Barry-Thomas-Paul: Moss"
 copyright = "2022"
-ooodev_url= "https://python-ooo-dev-tools.readthedocs.io/en/main/"
+ooodev_url= "https://python-ooo-dev-tools.readthedocs.io/en/latest/"
 
 [tool.poetry-version-plugin]
 source = "init"
