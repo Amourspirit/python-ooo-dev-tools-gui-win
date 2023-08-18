@@ -37,7 +37,7 @@ html[data-theme='dark'] dl.py.class dd dl.py.method dd dl.field-list.simple dd.f
 }
 
 html[data-theme='dark'] .lo-event a.reference.internal span.std-ref,
- html[data-theme='dark'] .lo-event a.reference.internal span.doc {
+html[data-theme='dark'] .lo-event a.reference.internal span.doc {
     /* color: chartreuse; */
     transition: all 0.2s ease-in-out;
     font-weight: 700;
@@ -54,7 +54,7 @@ html[data-theme='dark'] .lo-event a.reference.internal span.std-ref,
 /* Color for code in an admonition such as a Note or See Also */
 html[data-theme='dark'] .rst-content .admonition.seealso code,
 html[data-theme='dark'] .rst-content .admonition.note code {
-     background: #004a7b;
+    background: #004a7b;
 }
 
 html[data-theme='dark'] .rst-content .admonition.attention code {
@@ -71,13 +71,15 @@ html[data-theme='dark'] a .rst-content .admonition tt {
 /* End Color for code */
 
 html[data-theme='dark'] .rst-content .invert img {
-     transition: all 0.2s ease-in-out;
-     -webkit-filter: invert(80%);
+    transition: all 0.2s ease-in-out;
+    -webkit-filter: invert(80%);
     filter: invert(80%);
 }
+
 /* Start Summary Example for .. collapse Example sections */
 
-html[data-theme='dark'] .summary-example[open] {
+html[data-theme='dark'] .summary-example[open],
+html[data-theme='dark'] .rst-collapse[open] {
     background-color: #1c1c1c;
 }
 
@@ -100,60 +102,48 @@ html[data-theme='dark'] .sphinx-tabs-tab[aria-selected="true"] {
 html[data-theme='dark'] [role="tablist"] {
     border-bottom: 1px solid #42449f;
 }
+
 /* End Summary Example for .. tabs sections */
+
+html[data-theme='dark'] .rst-content code,
+html[data-theme='dark'] .rst-content tt,
+html[data-theme='dark'] code {
+    background-color: #1a1a1a !important;
+    border-color: #262626 !important;
+}
+
+html[data-theme='dark'] .rst-content code.literal:not(a code),
+html[data-theme='dark'] .rst-content tt.literal:not(a code) {
+    color: #cecece;
+}
+
+html[data-theme='dark'].writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.citation):not(.glossary):not(.simple) dl:not(.option-list):not(.field-list):not(.footnote):not(.citation):not(.glossary):not(.simple)>dt {
+    /* This is a fix for theme.css overriding dark.css. Added Feb 27, 2023 */
+    margin-bottom: 6px;
+    border: none;
+    border-left: 3px solid #303030;
+    background: #0b0b0b;
+    color: #959595;
+}
+
 
 /* start sphinx_design extension */
 html[data-theme='dark'] {
-     /* overides for sphinx_design extension colors */
-    --sd-color-primary: #007bff;
-    --sd-color-secondary: #6c757d;
-    --sd-color-success: #28a745;
-    --sd-color-info: #18d2ef;
-    --sd-color-warning: #f0b37e;
-    --sd-color-danger: #dc3545;
-    --sd-color-light: #f8f9fa;
-    --sd-color-muted: #6c757d;
-    --sd-color-dark: #212529;
-    --sd-color-black: black;
-    --sd-color-white: white;
-    --sd-color-primary-highlight: #0069d9;
-    --sd-color-secondary-highlight: #5c636a;
-    --sd-color-success-highlight: #228e3b;
-    --sd-color-info-highlight: #148a9c;
-    --sd-color-warning-highlight: #cc986b;
-    --sd-color-danger-highlight: #bb2d3b;
-    --sd-color-light-highlight: #d3d4d5;
-    --sd-color-muted-highlight: #5c636a;
-    --sd-color-dark-highlight: #1c1f23;
-    --sd-color-black-highlight: black;
-    --sd-color-white-highlight: #d9d9d9;
-    --sd-color-primary-text: #fff;
-    --sd-color-secondary-text: #fff;
-    --sd-color-success-text: #fff;
-    --sd-color-info-text: #fff;
-    --sd-color-warning-text: #212529;
-    --sd-color-danger-text: #fff;
-    --sd-color-light-text: #212529;
-    --sd-color-muted-text: #fff;
-    --sd-color-dark-text: #fff;
-    --sd-color-black-text: #fff;
-    --sd-color-white-text: #212529;
-    --sd-color-shadow: rgba(0, 0, 0, 0.15);
-    --sd-color-card-border: rgba(0, 0, 0, 0.125);
-    --sd-color-card-border-hover: hsla(231, 99%, 66%, 1);
-    --sd-color-card-background: transparent;
-    --sd-color-card-text: inherit;
-    --sd-color-card-header: transparent;
-    --sd-color-card-footer: transparent;
-    --sd-color-tabs-label-active: hsla(231, 99%, 66%, 1);
-    --sd-color-tabs-label-hover: hsla(231, 99%, 66%, 1);
-    --sd-color-tabs-label-inactive: hsl(0, 0%, 66%);
-    --sd-color-tabs-underline-active: hsla(231, 99%, 66%, 1);
-    --sd-color-tabs-underline-hover: rgba(178, 206, 245, 0.62);
-    --sd-color-tabs-underline-inactive: transparent;
-    --sd-color-tabs-overline: rgb(222, 222, 222);
-    --sd-color-tabs-underline: rgb(222, 222, 222);
-    --sd-fontsize-tabs-label: 1rem
+    /* overides for sphinx_design extension colors */
+    --sd-color-black: white;
+    --sd-color-white: black;
+
+    /* Overides for custom colors */
+    --t-color-black: white;
+    --t-color-white: black;
+
+    /* overrides for readthedocs dark theme */
+    --dark-link-color: #83caff;
+    --t-color-see-also: #101010;
+    --t-color-see-title: #004a7b;
+    --t-color-note-title: #004a7b;
+    --t-color-attention: #101010;
+    --t-color-attention-title: #803b00;
 }
 
 /* end sphinx_design extension */
