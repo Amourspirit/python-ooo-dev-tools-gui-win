@@ -1,4 +1,6 @@
-sphinx-toolbox
-sphinx-rtd-dark-mode
-typing_extensions
-ooo-dev-tools
+sphinx==6.2.1
+sphinx-toolbox==3.2.0
+sphinx-rtd-dark-mode==1.2.4
+typing_extensions>=4.5.0
+ooo-dev-tools==0.12.2
+toml==0.10.2
