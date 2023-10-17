@@ -32,6 +32,10 @@ See example |impress_make_slides|_.
 Installation
 ------------
 
+``ooo-dev-tools-gui-win`` is also available via an `Extension <https://extensions.libreoffice.org/en/extensions/show/41986>`__ for LibreOffice
+
+Install from `pypi.org <https://pypi.org/project/ooo-dev-tools-gui-win/>`__:
+
 .. code::
 
    pip install ooo-dev-tools-gui-win
